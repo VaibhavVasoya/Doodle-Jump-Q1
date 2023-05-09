@@ -5,29 +5,39 @@ using UnityEngine;
 public class Platform : MonoBehaviour
 {
 
-    [SerializeField] private GameObject PlatformPrefab;
-    [SerializeField] private int platformCount;
-    [SerializeField] private float levelWidth;
-    [SerializeField] private float minY = 1f;
-    [SerializeField] private float maxY = 1f;
-
+    [SerializeField] private float jumpForce;
     // Start is called before the first frame update
     void Start()
     {
-        Vector3 spawnPosition = new Vector3();
-
-        for (int i = 0; i < platformCount; i++)
-        {
-            spawnPosition.y += Random.Range(minY, maxY);
-            spawnPosition.x = Random.Range(-levelWidth, levelWidth);
-            Instantiate(PlatformPrefab, spawnPosition, Quaternion.identity);
-        }
+        
     }
-
 
     // Update is called once per frame
     void Update()
     {
-       
+        
+    }
+
+    private void OnCollisionEnter2D(Collision2D collision)
+    {
+        if (collision.relativeVelocity.y <= 0f)
+        {
+            Rigidbody2D rb = collision.collider.GetComponent<Rigidbody2D>();
+            if (rb != null)
+            {
+                Vector2 velocity = rb.velocity;
+                velocity.y = jumpForce;
+                rb.velocity = velocity;
+            }
+        }
+    }
+
+    private void OnTriggerEnter2D(Collider2D collision)
+    {
+        if (collision.gameObject.CompareTag("DownWall"))
+        {
+            Debug.Log("triggered");
+            Destroy(gameObject);
+        }
     }
 }

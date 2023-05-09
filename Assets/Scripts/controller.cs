@@ -6,7 +6,9 @@ public class controller : MonoBehaviour
 {
     Rigidbody2D rb;
     [SerializeField] float playerSpeed;
-    [SerializeField] float jumpPower; 
+    [SerializeField] Transform player;
+    [SerializeField] Transform walls;
+    //[SerializeField] float jumpPower; 
     
     // Start is called before the first frame update
     void Start()
@@ -21,15 +23,21 @@ public class controller : MonoBehaviour
 
         rb.velocity = new Vector2(horizontalInput * playerSpeed, rb.velocity.y);
 
+
+        walls.transform.position = new Vector3(walls.transform.position.x, player.position.y, walls.transform.position.z);
+
+
     }
 
-    private void OnCollisionEnter2D(Collision2D collision)
-    {
-        if(collision.gameObject.CompareTag("ground"))
-        {
-            rb.velocity = Vector2.up * jumpPower;
-        }
-    }
+
+
+    //private void OnCollisionEnter2D(Collision2D collision)
+    //{
+    //    if(collision.gameObject.CompareTag("ground"))
+    //    {
+    //        rb.velocity = Vector2.up * jumpPower;
+    //    }
+    //}
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
@@ -43,6 +51,8 @@ public class controller : MonoBehaviour
             transform.position = new Vector3(-3f, transform.position.y, transform.position.z);
         }
     }
+
+
 
 
 }
