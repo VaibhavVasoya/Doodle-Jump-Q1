@@ -37,7 +37,10 @@ public class Platform : MonoBehaviour
         if (collision.gameObject.CompareTag("DownWall"))
         {
             Debug.Log("triggered");
-            Destroy(gameObject);
+            //Destroy(gameObject);
+            gameObject.SetActive(false);    
         }
     }
+
+
 }

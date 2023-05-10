@@ -8,6 +8,7 @@ public class controller : MonoBehaviour
     [SerializeField] float playerSpeed;
     [SerializeField] Transform player;
     [SerializeField] Transform walls;
+    [SerializeField] bool facingRight = true;
     //[SerializeField] float jumpPower; 
     
     // Start is called before the first frame update
@@ -21,11 +22,33 @@ public class controller : MonoBehaviour
     {
         var horizontalInput = Input.GetAxis("Horizontal");
 
-        rb.velocity = new Vector2(horizontalInput * playerSpeed, rb.velocity.y);
+        //rb.velocity = new Vector2(horizontalInput * playerSpeed, rb.velocity.y);
+        float tilt = Input.acceleration.x;
+
+        rb.velocity = new Vector2(tilt * playerSpeed, rb.velocity.y);
 
 
         walls.transform.position = new Vector3(walls.transform.position.x, player.position.y, walls.transform.position.z);
 
+        //if(horizontalInput > 0 && !facingRight)
+        //{
+        //    flip();
+        //}
+
+        //if(horizontalInput < 0 && facingRight)
+        //{
+        //    flip();
+        //}
+
+        if (tilt > 0 && !facingRight)
+        {
+            flip();
+        }
+
+        if (tilt < 0 && facingRight)
+        {
+            flip();
+        }
 
     }
 
@@ -53,6 +76,15 @@ public class controller : MonoBehaviour
     }
 
 
+
+    public void flip()
+    {
+        Vector2 currentscale = gameObject.transform.localScale;
+        currentscale.x = currentscale.x * -1;
+        gameObject.transform.localScale = currentscale;
+        facingRight = !facingRight;
+
+    }
 
 
 }
