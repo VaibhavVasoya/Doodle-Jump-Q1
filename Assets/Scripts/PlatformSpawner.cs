@@ -4,65 +4,37 @@ using UnityEngine;
 
 public class PlatformSpawner : MonoBehaviour
 {
-    [SerializeField] private List<GameObject> platformPrefabs;
-    [SerializeField] private List<int> platformPoolSizes;
-    [SerializeField] private List<float> platformSpawnRates;
+    [SerializeField] private GameObject[] platformPrefabs;
+    [SerializeField] private float[] platformSpawnRates;
     [SerializeField] private float levelWidth;
     [SerializeField] private float minY = 1f;
     [SerializeField] private float maxY = 3f;
     [SerializeField] private float spawnDistance = 5f;
+    [SerializeField] private Transform playerTransform;
+    [SerializeField] private float LastSpawn;
 
-    private Transform playerTransform;
-    private float lastSpawnY;
-    private List<GameObject[]> platformPools;
-
-    // Start is called before the first frame update
-    void Start()
+    private void Start()
     {
-        playerTransform = GameObject.FindGameObjectWithTag("Player").transform;
-        lastSpawnY = playerTransform.position.y;
-        platformPools = new List<GameObject[]>();
-
-        // Create a pool for each platform type
-        for (int i = 0; i < platformPrefabs.Count; i++)
-        {
-            GameObject[] platformPool = new GameObject[platformPoolSizes[i]];
-            for (int j = 0; j < platformPoolSizes[i]; j++)
-            {
-                platformPool[j] = Instantiate(platformPrefabs[i], Vector3.zero, Quaternion.identity);
-                platformPool[j].SetActive(false);
-            }
-            platformPools.Add(platformPool);
-        }
+        LastSpawn = playerTransform.position.y - spawnDistance;
     }
 
-    // Update is called once per frame
-    void Update()
+    private void Update()
     {
-        if (playerTransform.position.y > lastSpawnY - spawnDistance)
+        if (playerTransform.position.y > LastSpawn - spawnDistance)
         {
             SpawnPlatforms();
         }
     }
 
-    void SpawnPlatforms()
+    private void SpawnPlatforms()
     {
-        for (int i = 0; i < platformPrefabs.Count; i++)
+        for (int i = 0; i < platformPrefabs.Length; i++)
         {
-            // Check if it's time to spawn this platform type
             if (Random.value < platformSpawnRates[i])
             {
-                GameObject[] platformPool = platformPools[i];
-                for (int j = 0; j < platformPoolSizes[i]; j++)
-                {
-                    if (!platformPool[j].activeInHierarchy)
-                    {
-                        platformPool[j].transform.position = new Vector3(Random.Range(-levelWidth, levelWidth), lastSpawnY + Random.Range(minY, maxY), 0);
-                        platformPool[j].SetActive(true);
-                        lastSpawnY = platformPool[j].transform.position.y;
-                        break;
-                    }
-                }
+                GameObject platformInstance = Instantiate(platformPrefabs[i]);
+                platformInstance.transform.position = new Vector3(Random.Range(-levelWidth, levelWidth), LastSpawn + Random.Range(minY, maxY), 0);
+                LastSpawn = platformInstance.transform.position.y;
             }
         }
     }

@@ -29,13 +29,21 @@ public class PlatformBreakable : MonoBehaviour
                 
                 breakAnimator.SetTrigger("BreakPlatform");
 
- 
+                StartCoroutine(DisablePlatform());
                 //transform.position = Vector2.MoveTowards(transform.position,,1f);                
 
             }
         }
     }
 
+
+    IEnumerator DisablePlatform()
+    {
+        yield return new WaitForSeconds(1);
+
+
+        gameObject.SetActive(false);
+    }
    
 
     private void OnTriggerEnter2D(Collider2D collision)

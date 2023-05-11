@@ -11,11 +11,13 @@ public class ScreenManager : MonoBehaviour
     [SerializeField] private Canvas PauseCanvas = default;
     [SerializeField] private Canvas GameOverCanvas = default;
     [SerializeField] GameObject PlatformSpawn;
+    [SerializeField] private PlayerController playerController;
 
 
     // Start is called before the first frame update    private void Start()
     void Start()
     {
+        
         ShowScreen(MainMenuCanvas);
         PlatformSpawn.SetActive(false);
     }
@@ -32,6 +34,7 @@ public class ScreenManager : MonoBehaviour
         ShowScreen(GamePlayCanvas);
         PlatformSpawn.SetActive(true);
         Time.timeScale = 1;
+        playerController.inputs = true;
 
     }
     public void ShowpauseCanvas()

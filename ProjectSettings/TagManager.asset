@@ -8,6 +8,8 @@ TagManager:
   - LeftWall
   - RightWall
   - DownWall
+  - heli
+  - Rocket
   layers:
   - Default
   - TransparentFX
