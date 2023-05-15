@@ -11,7 +11,7 @@ public class PlatformSpawner : MonoBehaviour
     [SerializeField] private float maxY = 3f;
     [SerializeField] private float spawnDistance = 5f;
     [SerializeField] private Transform playerTransform;
-    [SerializeField] private float LastSpawn;
+     private float LastSpawn;
 
     private void Start()
     {

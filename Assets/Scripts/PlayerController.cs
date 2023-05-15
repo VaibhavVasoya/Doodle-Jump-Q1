@@ -12,6 +12,9 @@ public class PlayerController : MonoBehaviour
     //[SerializeField] float jumpPower; 
     [SerializeField] private ScoreManager scoreManager;
     [SerializeField] private int currentScore;
+    [SerializeField] private GameObject Propeller;
+    [SerializeField] private GameObject jetPack;
+
     bool heli;
     bool rocket;
     public bool inputs;
@@ -21,11 +24,15 @@ public class PlayerController : MonoBehaviour
     void Start()
     {
         rb = GetComponent<Rigidbody2D>();
+        Propeller.SetActive(false);
+        jetPack.SetActive(false);
     }
 
     // Update is called once per frame
     void Update()
     {
+
+
         //for scores
         currentScore = Mathf.RoundToInt(player.position.y);
         if(currentScore > scoreManager.score)
@@ -63,7 +70,7 @@ public class PlayerController : MonoBehaviour
         if (rocket)
         {
             Vector2 direction = Vector2.up;
-            float speed = 20f;
+            float speed = 19f;
             rb.MovePosition((Vector2)transform.position + (direction * speed * Time.deltaTime));
 
             StartCoroutine(falling());
@@ -113,6 +120,9 @@ public class PlayerController : MonoBehaviour
         heli = false;
         rocket = false;
 
+        Propeller.SetActive(false);
+        jetPack.SetActive(false);
+
 
     }
 
@@ -129,6 +139,9 @@ public class PlayerController : MonoBehaviour
         }
     }
 
+
+
+
     private void OnCollisionEnter2D(Collision2D collision)
     {
 
@@ -136,11 +149,20 @@ public class PlayerController : MonoBehaviour
         {
                 heli = true;
                 Debug.Log("collisionnnn");
+            Destroy(collision.gameObject);
+            Propeller.SetActive(true);
+           
+                
+                
         }
         if (rb.velocity.y <= 0f && collision.gameObject.CompareTag("Rocket"))
         {
             rocket = true;
             Debug.Log("collisionnnn");
+            Destroy(collision.gameObject);
+
+            jetPack.SetActive(true);
+
         }
 
 
