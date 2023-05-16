@@ -41,14 +41,18 @@ public class PlayerController : MonoBehaviour
         }
 
 
+        //for coins
+
+
+
         //for Keyboard Inputs
 
 
         //for Android input
         if(inputs)
         {
-            AndroidInputs();
-            //Windowsinputs();
+            //AndroidInputs();
+            Windowsinputs();
 
         }
 
@@ -164,6 +168,13 @@ public class PlayerController : MonoBehaviour
             jetPack.SetActive(true);
 
         }
+
+        if (collision.gameObject.CompareTag("Coin"))
+        {
+            scoreManager.coin++;
+            Destroy(collision.gameObject);
+        }
+
 
 
 

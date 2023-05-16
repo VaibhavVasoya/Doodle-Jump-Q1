@@ -10,6 +10,8 @@ TagManager:
   - DownWall
   - heli
   - Rocket
+  - Coin
+  - bunny
   layers:
   - Default
   - TransparentFX
