@@ -15,6 +15,13 @@ public class ScoreManager : MonoBehaviour
     public int highScore;
     public int Candies;
 
+    public static ScoreManager instance;
+
+    private void Awake()
+    {
+        instance = this;
+    }
+
     private void Start()
     {
         score = 0;

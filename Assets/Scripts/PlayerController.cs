@@ -20,6 +20,13 @@ public class PlayerController : MonoBehaviour
     public bool inputs;
 
 
+    public static PlayerController inst;
+
+
+    private void Awake()
+    {
+        inst = this;
+    }
     // Start is called before the first frame update
     void Start()
     {
@@ -141,6 +148,13 @@ public class PlayerController : MonoBehaviour
         {
             transform.position = new Vector3(-3f, transform.position.y, transform.position.z);
         }
+
+
+        if (collision.gameObject.CompareTag("Coin"))
+        {
+            scoreManager.coin++;
+            Destroy(collision.gameObject);
+        }
     }
 
 
@@ -168,16 +182,6 @@ public class PlayerController : MonoBehaviour
             jetPack.SetActive(true);
 
         }
-
-        if (collision.gameObject.CompareTag("Coin"))
-        {
-            scoreManager.coin++;
-            Destroy(collision.gameObject);
-        }
-
-
-
-
 
     }
 
