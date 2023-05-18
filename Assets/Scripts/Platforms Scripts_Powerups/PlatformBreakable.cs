@@ -26,7 +26,7 @@ public class PlatformBreakable : MonoBehaviour
             if (rb != null)
             {
                 boxCollider.isTrigger = true;
-                
+                AudioManager.instance.Play("Break");
                 breakAnimator.SetTrigger("BreakPlatform");
 
                 StartCoroutine(DisablePlatform());

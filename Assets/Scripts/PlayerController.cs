@@ -4,19 +4,12 @@ using UnityEngine;
 
 public class PlayerController : MonoBehaviour
 {
-    public Rigidbody2D rb;
+    private Rigidbody2D rb;
     [SerializeField] float playerSpeed;
     [SerializeField] Transform player;
     [SerializeField] Transform walls;
     [SerializeField] bool facingRight = true;
-    //[SerializeField] float jumpPower; 
-    [SerializeField] private ScoreManager scoreManager;
     [SerializeField] private int currentScore;
-    [SerializeField] private GameObject Propeller;
-    [SerializeField] private GameObject jetPack;
-
-    bool heli;
-    bool rocket;
     public bool inputs;
 
 
@@ -31,8 +24,6 @@ public class PlayerController : MonoBehaviour
     void Start()
     {
         rb = GetComponent<Rigidbody2D>();
-        Propeller.SetActive(false);
-        jetPack.SetActive(false);
     }
 
     // Update is called once per frame
@@ -40,22 +31,17 @@ public class PlayerController : MonoBehaviour
     {
 
 
-        //for scores
+        //For scores
         currentScore = Mathf.RoundToInt(player.position.y);
-        if(currentScore > scoreManager.score)
+        if(currentScore > ScoreManager.instance.score)
         {
-            scoreManager.score = currentScore;
+            ScoreManager.instance.score = currentScore;
         }
 
 
-        //for coins
 
 
-
-        //for Keyboard Inputs
-
-
-        //for Android input
+        //For Inputs
         if(inputs)
         {
             //AndroidInputs();
@@ -65,27 +51,7 @@ public class PlayerController : MonoBehaviour
 
 
         //for walls
-        walls.transform.position = new Vector3(walls.transform.position.x, player.position.y, walls.transform.position.z);
-
-
-
-
-        if (heli)
-        {
-            Vector2 direction = Vector2.up;
-            float speed = 10f;
-            rb.MovePosition((Vector2)transform.position + (direction * speed * Time.deltaTime));
-
-            StartCoroutine(falling());
-        }
-        if (rocket)
-        {
-            Vector2 direction = Vector2.up;
-            float speed = 19f;
-            rb.MovePosition((Vector2)transform.position + (direction * speed * Time.deltaTime));
-
-            StartCoroutine(falling());
-        }
+        walls.transform.position = new Vector3(walls.transform.position.x, transform.position.y, walls.transform.position.z);
 
     }
 
@@ -124,18 +90,6 @@ public class PlayerController : MonoBehaviour
         }
     }
 
-    IEnumerator falling()
-    {
-        yield return new WaitForSeconds(5);
-
-        heli = false;
-        rocket = false;
-
-        Propeller.SetActive(false);
-        jetPack.SetActive(false);
-
-
-    }
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
@@ -152,37 +106,10 @@ public class PlayerController : MonoBehaviour
 
         if (collision.gameObject.CompareTag("Coin"))
         {
-            scoreManager.coin++;
+            AudioManager.instance.Play("Coin");
+            ScoreManager.instance.coin++;
             Destroy(collision.gameObject);
         }
-    }
-
-
-
-
-    private void OnCollisionEnter2D(Collision2D collision)
-    {
-
-        if (rb.velocity.y <= 0f && collision.gameObject.CompareTag("heli"))
-        {
-                heli = true;
-                Debug.Log("collisionnnn");
-            Destroy(collision.gameObject);
-            Propeller.SetActive(true);
-           
-                
-                
-        }
-        if (rb.velocity.y <= 0f && collision.gameObject.CompareTag("Rocket"))
-        {
-            rocket = true;
-            Debug.Log("collisionnnn");
-            Destroy(collision.gameObject);
-
-            jetPack.SetActive(true);
-
-        }
-
     }
 
 

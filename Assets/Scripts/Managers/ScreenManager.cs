@@ -2,11 +2,11 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class ScreenNavigator : MonoBehaviour
+public class ScreenManager : MonoBehaviour
 {
     public BaseClass[] screens;
     public BaseClass currentScreen;
-    public static ScreenNavigator inst;
+    public static ScreenManager inst;
 
     private void Awake()
     {

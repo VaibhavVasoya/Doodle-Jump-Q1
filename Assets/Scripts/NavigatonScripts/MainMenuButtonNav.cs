@@ -27,7 +27,7 @@ public class MainMenuButtonNav : MonoBehaviour
     {
         SceneManager.LoadScene("SampleScene");
         Time.timeScale = 1;
-        ScreenNavigator.inst.ShowNextScreen(ScreenType.HomeScreen);
+        ScreenManager.inst.ShowNextScreen(ScreenType.HomeScreen);
     }
 
    

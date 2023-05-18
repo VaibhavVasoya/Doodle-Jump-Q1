@@ -9,18 +9,12 @@ public class ShopManager : MonoBehaviour
     public Button DoodleBtn;
     [SerializeField] private int CandiesCount;
 
-    
-
-
     // Start is called before the first frame update
     void Start()
     {
         DoodleBtn.onClick.AddListener(BuyBunnyDoodle);
 
     }
-
-
-
 
     void BuyBunnyDoodle()
     {

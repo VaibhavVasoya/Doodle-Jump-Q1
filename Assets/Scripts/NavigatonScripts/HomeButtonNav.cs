@@ -25,7 +25,7 @@ public class HomeButtonNav : MonoBehaviour
 
     void HomeBtn()
     {
-        ScreenNavigator.inst.ShowNextScreen(ScreenType.HomeScreen);
+        ScreenManager.inst.ShowNextScreen(ScreenType.HomeScreen);
     }
 
    

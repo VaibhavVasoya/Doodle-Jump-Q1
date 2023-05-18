@@ -13,7 +13,7 @@ public class ScoreManager : MonoBehaviour
     public int score;
     public int coin;
     public int highScore;
-    public int Candies;
+    public int Candies = 100;
 
     public static ScoreManager instance;
 

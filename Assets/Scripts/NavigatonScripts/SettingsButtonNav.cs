@@ -25,7 +25,7 @@ public class SettingsButtonNav : MonoBehaviour
 
     void SettingsBtn()
     {
-        ScreenNavigator.inst.ShowNextScreen(ScreenType.SettingsScreen);
+        ScreenManager.inst.ShowNextScreen(ScreenType.SettingsScreen);
     }
 
    

@@ -20,7 +20,8 @@ public class CameraController : MonoBehaviour
         }
         if(player.position.y < transform.position.y - 10f)
         {
-            ScreenNavigator.inst.ShowNextScreen(ScreenType.GameOverScreen);
+            ScreenManager.inst.ShowNextScreen(ScreenType.GameOverScreen);
+            AudioManager.instance.Play("Fall");
             Vector3 newPosition = new Vector3(transform.position.x, player.position.y + 10f, transform.position.z);
             transform.position = newPosition;
             player.gameObject.SetActive(false);

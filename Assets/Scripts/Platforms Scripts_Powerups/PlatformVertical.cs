@@ -47,6 +47,7 @@ public class PlatformVertical : MonoBehaviour
             Rigidbody2D rb = collision.collider.GetComponent<Rigidbody2D>();
             if (rb != null)
             {
+                AudioManager.instance.Play("DoodleJump");
                 Vector2 velocity = rb.velocity;
                 velocity.y = jumpForce;
                 rb.velocity = velocity;

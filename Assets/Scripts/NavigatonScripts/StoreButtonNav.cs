@@ -25,7 +25,7 @@ public class StoreButtonNav : MonoBehaviour
 
     void StoreBtn()
     {
-        ScreenNavigator.inst.ShowNextScreen(ScreenType.ShopScreen);
+        ScreenManager.inst.ShowNextScreen(ScreenType.ShopScreen);
     }
 
    

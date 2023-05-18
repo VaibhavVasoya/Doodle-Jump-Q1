@@ -25,7 +25,7 @@ public class ScoreButtonNav : MonoBehaviour
 
     void ScoreBtn()
     {
-        ScreenNavigator.inst.ShowNextScreen(ScreenType.ScoreScreen);
+        ScreenManager.inst.ShowNextScreen(ScreenType.ScoreScreen);
     }
 
    

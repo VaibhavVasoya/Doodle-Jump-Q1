@@ -25,7 +25,7 @@ public class ResumeButtonNav : MonoBehaviour
     void ResumeBtn()
     {
         Time.timeScale = 1;
-        ScreenNavigator.inst.ShowNextScreen(ScreenType.GameScreen);
+        ScreenManager.inst.ShowNextScreen(ScreenType.GameScreen);
     }
 
    

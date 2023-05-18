@@ -25,7 +25,7 @@ public class PauseButtonNav : MonoBehaviour
     void PauseBtn()
     {
         Time.timeScale = 0;
-        ScreenNavigator.inst.ShowNextScreen(ScreenType.PauseScreen);
+        ScreenManager.inst.ShowNextScreen(ScreenType.PauseScreen);
     }
 
    
