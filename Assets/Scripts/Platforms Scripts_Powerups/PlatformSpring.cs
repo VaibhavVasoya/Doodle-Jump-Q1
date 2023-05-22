@@ -11,10 +11,9 @@ public class PlatformSpring : MonoBehaviour
 
     private void OnCollisionEnter2D(Collision2D collision)
     {
-        if (collision.relativeVelocity.y <= 0f)
-        {
+
             Rigidbody2D rb = collision.collider.GetComponent<Rigidbody2D>();
-            if (rb != null)
+            if (rb != null && rb.velocity.y <= 0f)
             {
                 AudioManager.instance.Play("Spring");
                 Vector2 velocity = rb.velocity;
@@ -24,5 +23,5 @@ public class PlatformSpring : MonoBehaviour
 
             }
         }
-    }
+ 
 }

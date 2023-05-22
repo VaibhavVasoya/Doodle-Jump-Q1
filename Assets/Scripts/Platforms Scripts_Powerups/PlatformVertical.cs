@@ -42,10 +42,8 @@ public class PlatformVertical : MonoBehaviour
 
     private void OnCollisionEnter2D(Collision2D collision)
     {
-        if (collision.relativeVelocity.y <= 0f)
-        {
             Rigidbody2D rb = collision.collider.GetComponent<Rigidbody2D>();
-            if (rb != null)
+            if (rb != null && rb.velocity.y <= 0f)
             {
                 AudioManager.instance.Play("DoodleJump");
                 Vector2 velocity = rb.velocity;
@@ -53,7 +51,6 @@ public class PlatformVertical : MonoBehaviour
                 rb.velocity = velocity;
 
             }
-        }
     }
 
 

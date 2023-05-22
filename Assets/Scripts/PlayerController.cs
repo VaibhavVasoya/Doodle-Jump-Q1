@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class PlayerController : MonoBehaviour
 {
-    private Rigidbody2D rb;
+    public Rigidbody2D rb;
     [SerializeField] float playerSpeed;
     [SerializeField] Transform player;
     [SerializeField] Transform walls;
@@ -54,6 +54,7 @@ public class PlayerController : MonoBehaviour
         walls.transform.position = new Vector3(walls.transform.position.x, transform.position.y, walls.transform.position.z);
 
     }
+
 
 
     public void AndroidInputs()

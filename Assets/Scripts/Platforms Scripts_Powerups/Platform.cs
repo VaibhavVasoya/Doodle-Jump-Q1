@@ -10,16 +10,20 @@ public class Platform : MonoBehaviour
 
     private void OnCollisionEnter2D(Collision2D collision)
     {
-        if (collision.relativeVelocity.y <= 0f)
+        //if (collision.relativeVelocity.y <= 0f)
         {
             Rigidbody2D rb = collision.collider.GetComponent<Rigidbody2D>();
             if (rb != null)
             {
-                AudioManager.instance.Play("DoodleJump");
-                Vector2 velocity = rb.velocity;
-                velocity.y = jumpForce;
-                rb.velocity = velocity;
-                
+                if (rb.velocity.y <= 0)
+                {
+                    AudioManager.instance.Play("DoodleJump");
+                    Vector2 velocity = rb.velocity;
+                    velocity.y = jumpForce;
+                    rb.velocity = velocity;
+                    //rb.AddForce(Vector2.up * jumpForce, ForceMode2D.Impulse);
+                }
+
             }
         }
     }
