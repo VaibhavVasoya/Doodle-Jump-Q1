@@ -27,6 +27,7 @@ public class ShopManager : MonoBehaviour
         }
         else
         {
+            ShopButtons.inst.ShowPopUp();
             Debug.Log("Not enough Candies");
 
         }

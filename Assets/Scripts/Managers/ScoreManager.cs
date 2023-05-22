@@ -10,6 +10,8 @@ public class ScoreManager : MonoBehaviour
     public Text highScoreTextOnScorePage;
     public Text coinText;
     public Text CanbdiesText;
+    public Text CandiesTextOnScoreScreen;
+    public Text CoinTextOnScoreScreen;
     public int score;
     public int coin;
     public int highScore;
@@ -58,6 +60,7 @@ public class ScoreManager : MonoBehaviour
         scoreTextOnGameOver.text = score.ToString();
         scoreTextOnGameplay.text = score.ToString();
         scoreTectOnPause.text = score.ToString();
+        
 
     }
 
@@ -70,10 +73,12 @@ public class ScoreManager : MonoBehaviour
     private void UpdateCoinText()
     {
         coinText.text = coin.ToString();
+        CoinTextOnScoreScreen.text = coin.ToString();
     }
 
     private void UpdateCandiesText()
     {
         CanbdiesText.text = Candies.ToString();
+        CandiesTextOnScoreScreen.text = Candies.ToString();
     }
 }

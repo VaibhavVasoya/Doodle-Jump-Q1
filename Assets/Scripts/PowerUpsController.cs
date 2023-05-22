@@ -5,7 +5,7 @@ using UnityEngine;
 public class PowerUpsController : MonoBehaviour
 {
     private Rigidbody2D rb;
-    private BoxCollider2D boxCollider2D;
+    //public BoxCollider2D boxCollider2D;
     [SerializeField] private GameObject Propeller;
     [SerializeField] private GameObject jetPack;
     bool heli;
@@ -16,7 +16,7 @@ public class PowerUpsController : MonoBehaviour
     void Start()
     {
         rb = GetComponent<Rigidbody2D>();
-        boxCollider2D = GetComponent<BoxCollider2D>();
+        //boxCollider2D = GetComponent<BoxCollider2D>();
 
         Propeller.SetActive(false);
         jetPack.SetActive(false);
@@ -29,17 +29,17 @@ public class PowerUpsController : MonoBehaviour
         if (heli)
         {
             Vector2 direction = Vector2.up;
-            float speed = 10f;
-            rb.MovePosition((Vector2)transform.position + direction * speed * Time.deltaTime);
-            boxCollider2D.enabled = false;            
+            float speed = 400f;
+            rb.velocity = new Vector3(rb.velocity.x, speed * Time.deltaTime);
+            //boxCollider2D.enabled = false;            
             StartCoroutine(falling());
         }
         if (rocket)
         {
             Vector2 direction = Vector2.up;
-            float speed = 19f;
-            rb.MovePosition((Vector2)transform.position + direction * speed * Time.deltaTime);
-            boxCollider2D.enabled = false;
+            float speed = 700f;
+            rb.velocity = new Vector3(rb.velocity.x, speed * Time.deltaTime);
+            //boxCollider2D.enabled = false;
             StartCoroutine(falling());
         }
 
@@ -54,7 +54,7 @@ public class PowerUpsController : MonoBehaviour
         heli = false;
         rocket = false;
 
-        boxCollider2D.enabled = true;
+        //boxCollider2D.enabled = true;
         Propeller.SetActive(false);
         jetPack.SetActive(false);
 
