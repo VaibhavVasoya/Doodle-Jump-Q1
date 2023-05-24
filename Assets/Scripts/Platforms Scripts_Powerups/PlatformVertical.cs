@@ -53,6 +53,16 @@ public class PlatformVertical : MonoBehaviour
             }
     }
 
+    private void OnTriggerEnter2D(Collider2D collision)
+    {
+        if (collision.gameObject.CompareTag("DownWall"))
+        {
+            Debug.Log("triggered");
+            Destroy(gameObject);
+            //gameObject.SetActive(false);
+        }
+    }
+
 
 
 }

@@ -4,10 +4,11 @@ using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.SceneManagement;
 
-public class HomeButtonNav : MonoBehaviour
+public class SettingsScreen : BaseClass
 {
 
     [SerializeField] private Button HomeButton;
+
 
 
     // Start is called before the first frame update
@@ -15,12 +16,7 @@ public class HomeButtonNav : MonoBehaviour
     {
        HomeButton.onClick.AddListener(HomeBtn);
 
-    }
 
-    // Update is called once per frame
-    void Update()
-    {
-        
     }
 
     void HomeBtn()

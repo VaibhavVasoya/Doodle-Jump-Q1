@@ -28,7 +28,6 @@ public class PowerUpsController : MonoBehaviour
 
         if (heli)
         {
-            Vector2 direction = Vector2.up;
             float speed = 400f;
             rb.velocity = new Vector3(rb.velocity.x, speed * Time.deltaTime);
             //boxCollider2D.enabled = false;            
@@ -36,7 +35,6 @@ public class PowerUpsController : MonoBehaviour
         }
         if (rocket)
         {
-            Vector2 direction = Vector2.up;
             float speed = 700f;
             rb.velocity = new Vector3(rb.velocity.x, speed * Time.deltaTime);
             //boxCollider2D.enabled = false;

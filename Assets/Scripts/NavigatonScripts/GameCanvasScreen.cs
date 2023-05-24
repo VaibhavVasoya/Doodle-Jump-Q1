@@ -2,18 +2,17 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
-using UnityEngine.SceneManagement;
 
-public class SettingsButtonNav : MonoBehaviour
+public class GameCanvasScreen : BaseClass
 {
 
-    [SerializeField] private Button SettingsButton;
+    [SerializeField] private Button PauseButton;
 
 
     // Start is called before the first frame update
     void Start()
     {
-       SettingsButton.onClick.AddListener(SettingsBtn);
+        PauseButton.onClick.AddListener(PauseBtn);
 
     }
 
@@ -23,9 +22,10 @@ public class SettingsButtonNav : MonoBehaviour
         
     }
 
-    void SettingsBtn()
+    void PauseBtn()
     {
-        ScreenManager.inst.ShowNextScreen(ScreenType.SettingsScreen);
+        Time.timeScale = 0;
+        ScreenManager.inst.ShowNextScreen(ScreenType.PauseScreen);
     }
 
    

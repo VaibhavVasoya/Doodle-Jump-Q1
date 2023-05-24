@@ -12,11 +12,6 @@ public class PlatformBreakable : MonoBehaviour
         boxCollider = GetComponent<BoxCollider2D>();
     }
 
-    // Update is called once per frame
-    void Update()
-    {
-
-    }
 
     private void OnCollisionEnter2D(Collision2D collision)
     {

@@ -4,24 +4,28 @@ using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.SceneManagement;
 
-public class MainMenuButtonNav : MonoBehaviour
+public class PauseScreen : BaseClass
 {
 
+    [SerializeField] private Button ResumeButton;
     [SerializeField] private Button MainMenuButton;
 
 
     // Start is called before the first frame update
     void Start()
     {
-       MainMenuButton.onClick.AddListener(MainMenuBtn);
+        ResumeButton.onClick.AddListener(ResumeBtn);
+        MainMenuButton.onClick.AddListener(MainMenuBtn);
+
 
     }
 
-    // Update is called once per frame
-    void Update()
+    void ResumeBtn()
     {
-        
+        Time.timeScale = 1;
+        ScreenManager.inst.ShowNextScreen(ScreenType.GameScreen);
     }
+
 
     void MainMenuBtn()
     {
@@ -30,5 +34,5 @@ public class MainMenuButtonNav : MonoBehaviour
         ScreenManager.inst.ShowNextScreen(ScreenType.HomeScreen);
     }
 
-   
+
 }

@@ -61,8 +61,8 @@ public class PlatformHorizontal : MonoBehaviour
         if (collision.gameObject.CompareTag("DownWall"))
         {
             Debug.Log("triggered");
-            //Destroy(gameObject);
-            gameObject.SetActive(false);
+            Destroy(gameObject);
+            //gameObject.SetActive(false);
         }
     }
 
