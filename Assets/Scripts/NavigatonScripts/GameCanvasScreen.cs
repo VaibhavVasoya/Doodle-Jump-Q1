@@ -24,7 +24,8 @@ public class GameCanvasScreen : BaseClass
 
     void PauseBtn()
     {
-        Time.timeScale = 0;
+        //Time.timeScale = 0;
+        PlayerController.inst.gameObject.GetComponent<Rigidbody2D>().bodyType = RigidbodyType2D.Static;
         ScreenManager.inst.ShowNextScreen(ScreenType.PauseScreen);
     }
 

@@ -11,11 +11,14 @@ public class MainMenuScreen : BaseClass
     [SerializeField] private Button ScoreButton;
     [SerializeField] private Button SettingsButton;
     [SerializeField] private Button StoreButton;
-
+    [SerializeField] private GameObject _spawnedPlatform;
+ 
 
     void Start()
     {
-        platformSpawner.SetActive(false);
+        //platformSpawner.SetActive(false);
+        _spawnedPlatform.SetActive(false);
+
 
         PlayButton.onClick.AddListener(PlayBtn);
         ScoreButton.onClick.AddListener(ScoreBtn);
@@ -29,8 +32,8 @@ public class MainMenuScreen : BaseClass
     void PlayBtn()
     {
         PlayerController.inst.inputs = true;
-        platformSpawner.SetActive(true);
         ScreenManager.inst.ShowNextScreen(ScreenType.GameScreen);
+        _spawnedPlatform.SetActive(true);
     }
 
 

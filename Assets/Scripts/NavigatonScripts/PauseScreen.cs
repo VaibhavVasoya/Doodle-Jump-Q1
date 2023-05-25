@@ -22,7 +22,7 @@ public class PauseScreen : BaseClass
 
     void ResumeBtn()
     {
-        Time.timeScale = 1;
+        PlayerController.inst.gameObject.GetComponent<Rigidbody2D>().bodyType = RigidbodyType2D.Dynamic;
         ScreenManager.inst.ShowNextScreen(ScreenType.GameScreen);
     }
 
@@ -30,8 +30,9 @@ public class PauseScreen : BaseClass
     void MainMenuBtn()
     {
         SceneManager.LoadScene("SampleScene");
-        Time.timeScale = 1;
+        //Time.timeScale = 1;
         ScreenManager.inst.ShowNextScreen(ScreenType.HomeScreen);
+      
     }
 
 
