@@ -15,20 +15,18 @@ public class PlatformBreakable : MonoBehaviour
 
     private void OnCollisionEnter2D(Collision2D collision)
     {
-        if (collision.relativeVelocity.y <= 0f)
-        {
+       
             Rigidbody2D rb = collision.collider.GetComponent<Rigidbody2D>();
-            if (rb != null)
+            if (rb != null && rb.velocity.y <= 0)
             {
                 boxCollider.isTrigger = true;
                 AudioManager.instance.Play("Break");
                 breakAnimator.SetTrigger("BreakPlatform");
 
                 StartCoroutine(DisablePlatform());
-                //transform.position = Vector2.MoveTowards(transform.position,,1f);                
 
             }
-        }
+     
     }
 
 
@@ -46,8 +44,8 @@ public class PlatformBreakable : MonoBehaviour
         if (collision.gameObject.CompareTag("DownWall"))
         {
             Debug.Log("triggered");
-            //Destroy(gameObject);
-            gameObject.SetActive(false);
+            Destroy(gameObject);
+            //gameObject.SetActive(false);
         }
 
 

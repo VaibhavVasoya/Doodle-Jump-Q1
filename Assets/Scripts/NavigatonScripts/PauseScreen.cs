@@ -22,17 +22,13 @@ public class PauseScreen : BaseClass
 
     void ResumeBtn()
     {
-        PlayerController.inst.gameObject.GetComponent<Rigidbody2D>().bodyType = RigidbodyType2D.Dynamic;
-        ScreenManager.inst.ShowNextScreen(ScreenType.GameScreen);
+        PlayerController.inst.ResumeGame();
     }
 
 
     void MainMenuBtn()
     {
-        SceneManager.LoadScene("SampleScene");
-        //Time.timeScale = 1;
-        ScreenManager.inst.ShowNextScreen(ScreenType.HomeScreen);
-      
+        PlayerController.inst.MainMenu();
     }
 
 

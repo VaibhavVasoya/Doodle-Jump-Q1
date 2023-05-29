@@ -8,10 +8,13 @@ public class ScreenManager : MonoBehaviour
     public BaseClass currentScreen;
     public static ScreenManager inst;
 
+        
     private void Awake()
     {
         inst = this;
     }
+
+
 
     private void Start()
     {
@@ -30,6 +33,24 @@ public class ScreenManager : MonoBehaviour
                 currentScreen = baseScreen;
                 break;
             }
+
+        }
+
+        switch (screenType)
+        {
+            case ScreenType.GameScreen:
+                PlayerController.inst.OnMovement += PlayerController.inst.Windowsinputs;
+                //PlayerController.inst.OnMovement += PlayerController.inst.AndroidInputs;
+                break;
+
+            case ScreenType.GameOverScreen:
+                PlayerController.inst.OnMovement = null;
+                break;
+
+          
+
+            
+
 
         }
     }

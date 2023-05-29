@@ -59,7 +59,6 @@ public class PlatformVertical : MonoBehaviour
         {
             Debug.Log("triggered");
             Destroy(gameObject);
-            //gameObject.SetActive(false);
         }
     }
 

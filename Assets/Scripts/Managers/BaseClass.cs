@@ -15,10 +15,6 @@ public class BaseClass : MonoBehaviour
         canvas.enabled = false;
     }
 
-    private void Start()
-    {
-        Debug.LogError("Base");
-    }
 }
 
 public enum ScreenType

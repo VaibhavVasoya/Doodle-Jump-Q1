@@ -16,6 +16,7 @@ public class ScoreManager : MonoBehaviour
     public int coin;
     public int highScore;
     public int Candies = 100;
+    private int currentScore;
 
     public static ScoreManager instance;
 
@@ -31,19 +32,21 @@ public class ScoreManager : MonoBehaviour
         coin = PlayerPrefs.GetInt("Coins", 0);
         UpdateScoreText();
         UpdateHighScoreText();
-        Candies = coin * 2;
+        UpdateCoinText();
+
     }
+
 
     void Update()
     {
         UpdateScoreText();
         UpdateHighScoreText();
-        UpdateCoinText();
         UpdateCandiesText();
+        HighScore();
+
 
         Candies = coin * 2;
 
-        // score += points;
         if (score > highScore)
         {
             highScore = score;
@@ -55,7 +58,16 @@ public class ScoreManager : MonoBehaviour
 
     }
 
-    private void UpdateScoreText()
+    public void HighScore()
+    {
+        currentScore = Mathf.RoundToInt(PlayerController.inst._player.position.y);
+        if (currentScore > score)
+        {
+            score = currentScore;
+        }
+    }
+
+    public void UpdateScoreText()
     {
         scoreTextOnGameOver.text = score.ToString();
         scoreTextOnGameplay.text = score.ToString();
@@ -64,19 +76,19 @@ public class ScoreManager : MonoBehaviour
 
     }
 
-    private void UpdateHighScoreText()
+    public void UpdateHighScoreText()
     {
         highScoreText.text = highScore.ToString();
         highScoreTextOnScorePage.text = highScore.ToString();
     }
 
-    private void UpdateCoinText()
+    public void UpdateCoinText()
     {
         coinText.text = coin.ToString();
         CoinTextOnScoreScreen.text = coin.ToString();
     }
 
-    private void UpdateCandiesText()
+    public void UpdateCandiesText()
     {
         CanbdiesText.text = Candies.ToString();
         CandiesTextOnScoreScreen.text = Candies.ToString();

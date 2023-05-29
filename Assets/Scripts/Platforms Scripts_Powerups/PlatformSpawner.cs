@@ -25,7 +25,7 @@ public class PlatformSpawner : MonoBehaviour
 
     private void Start()
     {
-        LastSpawn = playerTransform.position.y - spawnDistance;
+        LastSpawn = playerTransform.position.y;
     }
 
     private void Update()

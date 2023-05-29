@@ -5,24 +5,19 @@ using UnityEngine;
 public class PowerUpsController : MonoBehaviour
 {
     private Rigidbody2D rb;
-    //public BoxCollider2D boxCollider2D;
     [SerializeField] private GameObject Propeller;
     [SerializeField] private GameObject jetPack;
-    bool heli;
-    bool rocket;
+    public bool heli;
+    public  bool rocket;
 
-
-    // Start is called before the first frame update
     void Start()
     {
         rb = GetComponent<Rigidbody2D>();
-        //boxCollider2D = GetComponent<BoxCollider2D>();
 
         Propeller.SetActive(false);
         jetPack.SetActive(false);
     }
 
-    // Update is called once per frame
     void FixedUpdate()
     {
 
@@ -30,34 +25,30 @@ public class PowerUpsController : MonoBehaviour
         {
             float speed = 400f;
             rb.velocity = new Vector3(rb.velocity.x, speed * Time.deltaTime);
-            //boxCollider2D.enabled = false;            
-            StartCoroutine(falling());
+            Invoke("Fall", 5f);
         }
         if (rocket)
         {
             float speed = 700f;
             rb.velocity = new Vector3(rb.velocity.x, speed * Time.deltaTime);
-            //boxCollider2D.enabled = false;
-            StartCoroutine(falling());
+            Invoke("Fall", 5f);
         }
 
     }
 
 
-  
-    IEnumerator falling()
+    public void Fall()
     {
-        yield return new WaitForSeconds(5);
 
         heli = false;
         rocket = false;
 
-        //boxCollider2D.enabled = true;
         Propeller.SetActive(false);
         jetPack.SetActive(false);
-
-
+        CancelInvoke();
     }
+  
+
 
     private void OnCollisionEnter2D(Collision2D collision)
     {

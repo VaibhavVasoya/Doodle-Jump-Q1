@@ -16,17 +16,9 @@ public class GameCanvasScreen : BaseClass
 
     }
 
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
-
     void PauseBtn()
     {
-        //Time.timeScale = 0;
-        PlayerController.inst.gameObject.GetComponent<Rigidbody2D>().bodyType = RigidbodyType2D.Static;
-        ScreenManager.inst.ShowNextScreen(ScreenType.PauseScreen);
+        PlayerController.inst.PauseGame();
     }
 
    

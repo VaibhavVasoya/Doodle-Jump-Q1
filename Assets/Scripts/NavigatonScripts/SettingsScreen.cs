@@ -8,6 +8,7 @@ public class SettingsScreen : BaseClass
 {
 
     [SerializeField] private Button HomeButton;
+    public Toggle soundToggle;
 
 
 
@@ -24,5 +25,16 @@ public class SettingsScreen : BaseClass
         ScreenManager.inst.ShowNextScreen(ScreenType.HomeScreen);
     }
 
-   
+    public void ToggleSound()
+    {
+        if (soundToggle.isOn)
+        {
+            AudioManager.instance.UnMuteVolume();
+        }
+        else
+        {
+            AudioManager.instance.MuteVolume();
+        }
+    }
+
 }

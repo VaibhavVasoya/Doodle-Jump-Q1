@@ -5,11 +5,6 @@ using UnityEngine;
 public class CameraController : MonoBehaviour
 {
     [SerializeField] private Transform player;
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
 
     void LateUpdate()
     {
@@ -18,14 +13,23 @@ public class CameraController : MonoBehaviour
             Vector3 newPosition = new Vector3(transform.position.x, player.position.y,transform.position.z);
             transform.position = newPosition;
         }
-        if(player.position.y < transform.position.y - 10f)
+        if(player.position.y < transform.position.y - 8f)
         {
             ScreenManager.inst.ShowNextScreen(ScreenType.GameOverScreen);
             AudioManager.instance.Play("Fall");
-            Vector3 newPosition = new Vector3(transform.position.x, player.position.y + 10f, transform.position.z);
+            Vector3 newPosition = new Vector3(transform.position.x, player.position.y, transform.position.z);
             transform.position = newPosition;
-            player.gameObject.SetActive(false);
+            Invoke("Fall", 0.5f);
         }
 
     }
+
+
+    public void Fall()
+    {
+        player.gameObject.SetActive(false);
+        CancelInvoke();
+    }
+
+
 }

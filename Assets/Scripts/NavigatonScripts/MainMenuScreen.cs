@@ -16,7 +16,6 @@ public class MainMenuScreen : BaseClass
 
     void Start()
     {
-        //platformSpawner.SetActive(false);
         _spawnedPlatform.SetActive(false);
 
 
@@ -31,7 +30,6 @@ public class MainMenuScreen : BaseClass
 
     void PlayBtn()
     {
-        PlayerController.inst.inputs = true;
         ScreenManager.inst.ShowNextScreen(ScreenType.GameScreen);
         _spawnedPlatform.SetActive(true);
     }
