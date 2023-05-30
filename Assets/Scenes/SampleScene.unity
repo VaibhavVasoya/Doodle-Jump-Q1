@@ -1509,6 +1509,7 @@ GameObject:
   - component: {fileID: 155768094}
   - component: {fileID: 155768096}
   - component: {fileID: 155768097}
+  - component: {fileID: 155768098}
   m_Layer: 0
   m_Name: DownWall
   m_TagString: DownWall
@@ -1578,6 +1579,18 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 0
+--- !u!114 &155768098
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 155768093}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0d8a48acecc2d40b4aba741ef86a0b47, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &178625080
 GameObject:
   m_ObjectHideFlags: 0
@@ -3051,10 +3064,9 @@ GameObject:
   - component: {fileID: 440648810}
   - component: {fileID: 440648809}
   - component: {fileID: 440648812}
-  - component: {fileID: 440648813}
   m_Layer: 0
   m_Name: Platform
-  m_TagString: ground
+  m_TagString: RestartPlatform
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -3171,19 +3183,6 @@ PlatformEffector2D:
   m_UseSideFriction: 0
   m_UseSideBounce: 0
   m_SideArc: 1
---- !u!114 &440648813
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 440648808}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 21e57fd794f214f9dab62c482deaa666, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  jumpForce: 6
 --- !u!1 &479159141
 GameObject:
   m_ObjectHideFlags: 0
@@ -5722,10 +5721,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1bfd1c677d3b5418783402a3b5d04ee1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _playerSpeed: 10
+  _jumpForce: 7
+  _jumpForceTrampoline: 19
+  _jumpForceSpring: 15
   _camera: {fileID: 519420031}
   _platform: {fileID: 440648808}
   _spawnedPlatforms: {fileID: 1027419671}
-  _playerSpeed: 10
   isfacingRight: 1
   _player: {fileID: 721491256}
   _rb: {fileID: 0}
@@ -11175,13 +11177,13 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   platformPrefabs:
   - {fileID: 384293570325718731, guid: c6fdc65cf113f4571a95df5cf050c5ca, type: 3}
-  - {fileID: 1511786762258477340, guid: db34240fc43274f9498dfc57ce31fc9f, type: 3}
+  - {fileID: 2097774301244007936, guid: 634c71e8b47944c12aa670199708ab28, type: 3}
   - {fileID: 1046630819124662442, guid: 9916474200dd5468da964f6bf3c1ea5e, type: 3}
   - {fileID: 4289289979400314858, guid: 12268451ca3e44342bca0de7050a8658, type: 3}
   - {fileID: 7702509448382220504, guid: 9a323283514e444809d6502552911eb2, type: 3}
   - {fileID: 4030352893806826358, guid: 78fb9e5864a7349f3a623dace528a4de, type: 3}
   - {fileID: 8494615518922221791, guid: 40f69cfdc5798498aa6eb1f65041d8eb, type: 3}
-  - {fileID: 6207616080276871166, guid: 0905e0a7ab1c3430a9ee3abab06e2383, type: 3}
+  - {fileID: 7721768457320016492, guid: a890c49d53a7b494b82a83ef51381a84, type: 3}
   - {fileID: 4782374732252402056, guid: 640523264ee394b428b6f5b33f9d3089, type: 3}
   - {fileID: 5271711426304821768, guid: dda44ab85712d4e3584a01c947336bf9, type: 3}
   platformSpawnRates:
@@ -17896,24 +17898,10 @@ GameObject:
   - component: {fileID: 384293570041037149}
   - component: {fileID: 384293570041037150}
   - component: {fileID: 384293570041037147}
-  - component: {fileID: 384293570041037152}
   m_Layer: 0
   m_Name: Platform
-  m_TagString: ground
+  m_TagString: Platform
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!114 &384293570041037152
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 384293570041037151}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 21e57fd794f214f9dab62c482deaa666, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  jumpForce: 7

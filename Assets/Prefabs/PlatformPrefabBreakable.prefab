@@ -16,7 +16,7 @@ GameObject:
   - component: {fileID: 852070763091077616}
   m_Layer: 0
   m_Name: PlatformPrefabBreakable
-  m_TagString: ground
+  m_TagString: BreakablePlatform
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -165,5 +165,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 46b0f87f6dfa94ed192299854ad758ac, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  gameTags: 2
   boxCollider: {fileID: 0}
   breakAnimator: {fileID: 852070763091077630}

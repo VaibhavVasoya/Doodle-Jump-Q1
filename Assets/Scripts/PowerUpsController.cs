@@ -25,7 +25,7 @@ public class PowerUpsController : MonoBehaviour
         {
             float speed = 400f;
             rb.velocity = new Vector3(rb.velocity.x, speed * Time.deltaTime);
-            Invoke("Fall", 5f);
+            Invoke(nameof(Fall), 5f);
         }
         if (rocket)
         {

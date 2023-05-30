@@ -12,6 +12,12 @@ TagManager:
   - Rocket
   - Coin
   - bunny
+  - Platform
+  - Trampoline
+  - Spring
+  - RestartPlatform
+  - Enemy
+  - BreakablePlatform
   layers:
   - Default
   - TransparentFX

@@ -5,7 +5,6 @@ using UnityEngine;
 public class PlatformSpring : MonoBehaviour
 {
 
-    [SerializeField] private float jumpForce;
     [SerializeField] private Animator springAnim; 
 
 
@@ -17,7 +16,7 @@ public class PlatformSpring : MonoBehaviour
             {
                 AudioManager.instance.Play("Spring");
                 Vector2 velocity = rb.velocity;
-                velocity.y = jumpForce;
+                velocity.y = PlayerController.inst._jumpForceSpring;
                 rb.velocity = velocity;
                 springAnim.SetTrigger("Spring");
 

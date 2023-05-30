@@ -15,7 +15,7 @@ GameObject:
   - component: {fileID: 6401917562973349149}
   m_Layer: 0
   m_Name: Trampoline
-  m_TagString: Untagged
+  m_TagString: Trampoline
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -160,7 +160,7 @@ GameObject:
   - component: {fileID: 4377831333190916697}
   m_Layer: 0
   m_Name: PlatformPrefabTrampoline
-  m_TagString: ground
+  m_TagString: Platform
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0

@@ -4,6 +4,8 @@ using UnityEngine;
 
 public class PlatformBreakable : MonoBehaviour
 {
+    public GameTags gameTags;
+
     [SerializeField] private BoxCollider2D boxCollider;
     [SerializeField] private Animator breakAnimator;
     // Start is called before the first frame update

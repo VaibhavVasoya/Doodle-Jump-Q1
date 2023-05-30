@@ -44,7 +44,6 @@ public class PlatformSpawner : MonoBehaviour
             if (Random.value < platformSpawnRates[i])
             {
                 GameObject platformInstance = Instantiate(platformPrefabs[i]);
-                //Debug.Log(platformPrefabs.Length);
                 platformInstance.transform.parent = _spawnedPlatform.transform;
                 platformInstance.transform.position = new Vector3(Random.Range(-levelWidth, levelWidth), LastSpawn + Random.Range(minY, maxY), 0);
                 LastSpawn = platformInstance.transform.position.y;

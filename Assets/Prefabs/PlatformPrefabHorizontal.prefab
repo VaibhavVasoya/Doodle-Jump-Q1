@@ -15,7 +15,7 @@ GameObject:
   - component: {fileID: 431614663317918232}
   m_Layer: 0
   m_Name: PlatformPrefabHorizontal
-  m_TagString: ground
+  m_TagString: Platform
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0

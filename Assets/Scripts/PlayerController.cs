@@ -5,16 +5,26 @@ using System;
 
 public class PlayerController : MonoBehaviour
 {
+    [SerializeField] private float _playerSpeed;
+    [SerializeField] private float _jumpForce;
+    [SerializeField] private float _jumpForceTrampoline;
+    [SerializeField] public float _jumpForceSpring;
+    private float _jumpForceRestart = 5;
+
     [SerializeField] private Camera _camera;
     [SerializeField] private GameObject _platform;
     [SerializeField] private GameObject _spawnedPlatforms;
-    [SerializeField] private float _playerSpeed;
     [SerializeField] private bool  isfacingRight = true;
+
+    private const string Platform = "Platform";
+    private const string Trampoline = "Trampoline";
+    private const string RestartPlatform = "RestartPlatform";
+    private const string Enemy = "Enemy";
+
 
     public Transform _player;
     public Rigidbody2D _rb;
     public BoxCollider2D _boxCollider2D;
-
     public Action OnMovement;
 
     public static PlayerController inst;
@@ -24,7 +34,7 @@ public class PlayerController : MonoBehaviour
     {
         inst = this;
     }
-    // Start is called before the first frame update
+
     void Start()
     {
         _rb = GetComponent<Rigidbody2D>();
@@ -36,9 +46,6 @@ public class PlayerController : MonoBehaviour
     {  
             OnMovement?.Invoke();       
     }
-
-
-
 
 
     public void AndroidInputs()
@@ -97,6 +104,40 @@ public class PlayerController : MonoBehaviour
             ScoreManager.instance.UpdateCoinText();
             Destroy(collision.gameObject);
             ScoreManager.instance.Candies = ScoreManager.instance.coin * 2;
+        }
+    }
+
+
+    private void OnCollisionEnter2D(Collision2D collision)
+    {
+        if(collision.gameObject.CompareTag(Platform) && _rb.velocity.y <= 0)
+        {
+            AudioManager.instance.Play("DoodleJump");
+            Vector2 velocity = _rb.velocity;
+            velocity.y = _jumpForce;
+            _rb.velocity = velocity;
+        }
+
+        //if(collision.gameObject.GetComponent<PlatformBreakable>().gameTags == GameTags.RestartPlatform)
+        if(collision.gameObject.CompareTag(Trampoline) && _rb.velocity.y <= 0)
+        {
+            AudioManager.instance.Play("Trampoline");
+            Vector2 velocity = _rb.velocity;
+            velocity.y = _jumpForceTrampoline;
+            _rb.velocity = velocity;
+        }
+
+        if(collision.gameObject.CompareTag(RestartPlatform) && _rb.velocity.y <= 0)
+        {
+            AudioManager.instance.Play("DoodleJump");
+            Vector2 velocity = _rb.velocity;
+            velocity.y = _jumpForceRestart;
+            _rb.velocity = velocity;
+        }
+
+        if(collision.gameObject.CompareTag(Enemy))
+        {
+            _boxCollider2D.enabled = false;
         }
     }
 
@@ -160,5 +201,15 @@ public class PlayerController : MonoBehaviour
         }
     }
 
+
+
+}
+
+public enum GameTags
+{
+    Platform,
+    Trampoline,
+    RestartPlatform,
+    Enemy,
 
 }
